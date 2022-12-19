@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="direccion",schema ="public")
@@ -23,6 +24,8 @@ public class Direccion {
     @Column(name = "estado")
     private Integer estado;
 
+    @OneToMany(mappedBy = "direccion",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Persona> personas;
     public Integer getId() {
         return id;
     }

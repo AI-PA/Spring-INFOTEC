@@ -12,8 +12,12 @@ public class Persona {
     private String nombre;
     @Column(name = "apellidos")
     private String apellidos;
-    @Column(name = "direccion_id")
-    private Integer direccion_id;
+    @ManyToOne
+    @JoinColumn(name = "direccion_id_id")
+    private Direecion_id direccion_id;
+
+    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Pasatiempos pasatiempos;
 
     public Integer getId() {
         return id;
@@ -39,11 +43,4 @@ public class Persona {
         this.apellidos = apellidos;
     }
 
-    public Integer getDireccion_id() {
-        return direccion_id;
-    }
-
-    public void setDireccion_id(Integer direccion_id) {
-        this.direccion_id = direccion_id;
-    }
 }

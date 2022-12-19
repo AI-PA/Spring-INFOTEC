@@ -12,8 +12,10 @@ public class Pasatiempos {
     private String nombre;
     @Column(name = "pasatiempo")
     private Integer pasatiempo;
-    @Column(name = "id_persona")
-    private Integer id_persona;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_persona")
+    private Id_persona id_persona;
 
     public Integer getId() {
         return id;
